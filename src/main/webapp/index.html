@@ -2,13 +2,69 @@
 <head>
     <meta charset="UTF-8">
     <title>Java Enterprise (Topjava)</title>
+
 </head>
 <body>
 <h3>Проект <a href="https://github.com/JavaWebinar/topjava" target="_blank">Java Enterprise (Topjava)</a></h3>
 <hr>
 <ul>
-    <li><a href="users">Users</a></li>
-    <li><a href="meals">Meals</a></li>
+
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!--<li><a href="users">Users</a></li>-->
+            <ul class="navbar-nav ml-auto">
+
+
+                <li class="nav-item">
+                    <form id="command" class="form-inline my-2" action="users" method="post">
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Users</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01" name="userId">
+                                <option selected>Choose...</option>
+                                <option value="2">admin</option>
+                                <option value="1">user</option>
+                            </select>
+                            <button type="submit">go</button>
+                            <input type="hidden" name="_csrf" value="477a8053-1760-4278-adf3-8d78668bf608"/>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--<li><a href="users">Users</a></li>-->
+    <!--<li><a href="meals">Meals</a></li>-->
+    <!--<div class="container">-->
+    <!--<div class="collapse navbar-collapse" id="navbarNav">-->
+    <!--<li><a href="users">Users</a></li>-->
+    <!--<ul class="navbar-nav ml-auto">-->
+
+
+    <!--<li class="nav-item">-->
+    <!--<form id="command" class="form-inline my-2" action="meals" method="get">-->
+
+    <!--<div class="input-group mb-3">-->
+    <!--<div class="input-group-prepend">-->
+    <!--<label class="input-group-text" for="inputGroupSelect01">Users</label>-->
+    <!--</div>-->
+    <!--<select class="custom-select" id="inputGroupSelect01">-->
+    <!--<option selected>Choose...</option>-->
+    <!--<option value="2">${ADMIN_ID}</option>-->
+    <!--<option value="1">${USER_ID}</option>-->
+    <!--</select>-->
+
+    <!--<input type="hidden" name="_csrf" value="477a8053-1760-4278-adf3-8d78668bf608"/>-->
+    <!--</div>-->
+    <!--</form>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--</div>-->
+
 </ul>
 </body>
 </html>
