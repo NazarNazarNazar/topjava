@@ -34,7 +34,7 @@ public abstract class AbstractUserController {
     }
 
     public void delete(int id) {
-        log.info("delete {}", id);
+        log.info("deleteByIdMealAndUser {}", id);
         service.delete(id);
     }
 

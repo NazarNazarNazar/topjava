@@ -13,7 +13,7 @@
 - сделал [видео с jQuery конвертерами и дефолтными группами валидации при сохранении в базу](https://drive.google.com/open?id=1tOMOdmaP5OQ7iynwC77bdXSs-13Ommax)
 - сделал [видео с новым `DelegatingPasswordEncoder` и Json READ/WRITE access](https://drive.google.com/file/d/1XZXvOThinzPw4EhigAUdo8-MWT_g8wOt/view?usp=sharing)
 - убрал `AccessType.PROPERTY` для `AbstractBaseEntity.id` (см. [fixed HHH-3718](https://hibernate.atlassian.net/browse/HHH-3718))
-- удалил `PasswordUtil`, возвращаю статус `NO_CONTENT` для REST delete, убрал группы валидации в `UserTo`
+- удалил `PasswordUtil`, возвращаю статус `NO_CONTENT` для REST deleteByIdMealAndUser, убрал группы валидации в `UserTo`
 - заменил в jQuery [success на done](https://stackoverflow.com/a/22213543/548473)
 - вместо `lang.jsp` сделал общий `bodyHeader.jsp`
 

@@ -38,7 +38,7 @@ public class MealRestController {
 
     public void delete(int id) {
         int userId = SecurityUtil.authUserId();
-        log.info("delete meal {} for user {}", id, userId);
+        log.info("deleteByIdMealAndUser meal {} for user {}", id, userId);
         service.delete(id, userId);
     }
 

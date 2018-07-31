@@ -43,6 +43,7 @@ public class MealServiceImpl implements MealService {
         return repository.getAll(userId);
     }
 
+
     @Override
     public void update(Meal meal, int userId) {
         checkNotFoundWithId(repository.save(meal, userId), meal.getId());
@@ -52,5 +53,10 @@ public class MealServiceImpl implements MealService {
     public Meal create(Meal meal, int userId) {
         Assert.notNull(meal, "meal must not be null");
         return repository.save(meal, userId);
+    }
+
+    @Override
+    public Meal getMealWithUser(int id) {
+        return null;
     }
 }
