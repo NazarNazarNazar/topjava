@@ -9,7 +9,6 @@ import ru.javawebinar.topjava.model.Meal;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Transactional(readOnly = true)
 public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
@@ -23,13 +22,13 @@ public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
     @Query("DELETE FROM Meal m WHERE m.id=:id AND m.user.id=:userId")
     int deleteByIdMealAndUser(@Param("id") int id, @Param("userId") int userId);
 
-//    @Query("SELECT m FROM Meal m WHERE m.id=:id AND m.user.id=:userId")
+    //    @Query("SELECT m FROM Meal m WHERE m.id=:id AND m.user.id=:userId")
     Meal findByIdAndUserId(@Param("id") Integer id, @Param("user_id") int userId);
 
-//    @Query("SELECT m FROM Meal m WHERE m.user.id=:userId ORDER BY m.dateTime DESC")
+    //    @Query("SELECT m FROM Meal m WHERE m.user.id=:userId ORDER BY m.dateTime DESC")
     List<Meal> findByUserIdOrderByDateTimeDesc(@Param("user_id") int userId);
 
-//    @Query("SELECT m FROM Meal m WHERE m.user.id=:userId AND m.dateTime " +
+    //    @Query("SELECT m FROM Meal m WHERE m.user.id=:userId AND m.dateTime " +
 //            "BETWEEN :startDate AND :endDate ORDER BY m.dateTime DESC")
     List<Meal> findByDateTimeBetweenAndUserIdOrderByDateTimeDesc(@Param("startDate") LocalDateTime start,
                                                                  @Param("endDate") LocalDateTime end,
