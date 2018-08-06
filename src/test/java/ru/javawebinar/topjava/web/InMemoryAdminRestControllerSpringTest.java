@@ -21,10 +21,8 @@ import static ru.javawebinar.topjava.UserTestData.ADMIN;
 @RunWith(SpringRunner.class)
 public class InMemoryAdminRestControllerSpringTest {
 
-    @Autowired
     private AdminRestController controller;
 
-    @Autowired
     private InMemoryUserRepositoryImpl repository;
 
     @Before
@@ -43,5 +41,15 @@ public class InMemoryAdminRestControllerSpringTest {
     @Test(expected = NotFoundException.class)
     public void deleteNotFound() throws Exception {
         controller.delete(10);
+    }
+
+    @Autowired
+    public void setController(AdminRestController controller) {
+        this.controller = controller;
+    }
+
+    @Autowired
+    public void setRepository(InMemoryUserRepositoryImpl repository) {
+        this.repository = repository;
     }
 }
