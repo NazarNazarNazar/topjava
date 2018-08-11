@@ -6,18 +6,19 @@
 <html>
 <head>
     <title>Meal</title>
-    <link rel="stylesheet" href="css/style.css">
+    <jsp:include page="fragments/headTag.jsp"/>
 </head>
-<jsp:include page="fragments/headTag.jsp"/>
 <body>
 <jsp:include page="fragments/bodyHeader.jsp"/>
 <section>
-    <jsp:useBean id="meal" type="ru.javawebinar.topjava.model.Meal" scope="request"/>
+    <jsp:useBean id="meal" class="ru.javawebinar.topjava.model.Meal" scope="request"/>
+
     <h3><a href="index.html"><spring:message code="app.home"/></a></h3>
     <h2><fmt:message key="${meal.isNew() ? 'meal.add' : 'meal.edit'}"/></h2>
+
     <hr>
-    <jsp:useBean id="meal" type="ru.javawebinar.topjava.model.Meal" scope="request"/>
-    <form method="post" action="meals">
+
+    <form method="post" action="<spring:url value="/meals"/>">
         <input type="hidden" name="id" value="${meal.id}">
         <dl>
             <dt><spring:message code="meal.dateTime"/></dt>
@@ -34,6 +35,8 @@
         <button type="submit"><spring:message code="common.save"/></button>
         <button onclick="window.history.back()" type="button"><spring:message code="common.cancel"/></button>
     </form>
+
 </section>
+<jsp:include page="fragments/footer.jsp"/>
 </body>
 </html>
