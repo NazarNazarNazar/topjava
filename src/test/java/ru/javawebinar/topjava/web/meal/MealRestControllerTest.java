@@ -61,14 +61,15 @@ class MealRestControllerTest extends AbstractControllerTest {
 
     @Test
     void testUpdate() throws Exception {
-        MEAL1.setDescription("Lunch");
-        MEAL1.setCalories(222);
+        Meal updated = new Meal(MEAL1);
+        updated.setDescription("Lunch");
+        updated.setCalories(222);
         mockMvc.perform(put(MEAL_REST_URL + MEAL1_ID)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.writeValue(MEAL1)))
+                .content(JsonUtil.writeValue(updated)))
                 .andExpect(status().isOk());
 
-        assertMatch(mealService.get(MEAL1_ID, START_SEQ), MEAL1);
+        assertMatch(mealService.get(MEAL1_ID, START_SEQ), updated);
 
     }
 
