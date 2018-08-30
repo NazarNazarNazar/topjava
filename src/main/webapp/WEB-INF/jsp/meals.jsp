@@ -13,25 +13,25 @@
     <div class="container">
         <h3><spring:message code="meal.title"/></h3>
 
+
+        <!-- FILTER -->
         <div class="row">
             <div class="col-7">
                 <div class="card">
-                    <%--<div class="card-header">--%>
-                    <%--<h5>Filter by date and time</h5>--%>
-                    <%--</div>--%>
                     <div class="card-body">
-                        <form id="filter" method="post" action="meals/filter">
+                        <form id="filter">
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
 
                                         <label class="col-form-label"><spring:message code="meal.startDate"/>:</label>
-                                        <input type="date" name="startDate" class="form-control col-8"
+                                        <input id="d1" type="date" name="startDate" class="form-control col-8"
                                                value="${param.startDate}"/>
 
 
                                         <label class="col-form-label"><spring:message code="meal.endDate"/>:</label>
-                                        <input id="endDate" type="date" name="endDate" class="form-control col-8"
+                                        <input id="d2" id="endDate" type="date" name="endDate"
+                                               class="form-control col-8"
                                                value="${param.endDate}"/>
 
                                     </div>
@@ -41,18 +41,22 @@
                                     <div class="form-group">
 
                                         <label class="col-form-label"><spring:message code="meal.startTime"/>:</label>
-                                        <input type="time" name="startTime" class="form-control col-8"
+                                        <input id="t1" type="time" name="startTime" class="form-control col-8"
                                                value="${param.startTime}">
 
 
                                         <label class="col-form-label"><spring:message code="meal.endTime"/>:</label>
-                                        <input type="time" name="endTime" class="form-control col-8"
+                                        <input id="t2" type="time" name="endTime" class="form-control col-8"
                                                value="${param.endTime}">
 
                                     </div>
                                 </div>
                             </div>
                         </form>
+                        <button id="reset" type="reset" class="btn btn-primary">
+                            <span class="fa fa-plus"></span>
+                            <spring:message code="meal.reset"/>
+                        </button>
                         <button type="submit" class="btn btn-primary" onclick="filter()">
                             <span class="fa fa-plus"></span>
                             <spring:message code="meal.filter"/>
@@ -72,9 +76,12 @@
         <%--<a href="meals/create"><spring:message code="meal.add"/></a>--%>
         <hr>
 
+
+        <!-- TABLE -->
         <table class="table">
             <thead>
             <tr scope="col">
+                <th scope="row" type="hidden"></th>
                 <th scope="row"><spring:message code="meal.dateTime"/></th>
                 <th scope="row"><spring:message code="meal.description"/></th>
                 <th scope="row"><spring:message code="meal.calories"/></th>
@@ -94,15 +101,17 @@
                     <td>${meal.description}</td>
                     <td>${meal.calories}</td>
                         <%--<td><a href="meals/update?id=${meal.id}"><spring:message code="common.update"/></a></td>--%>
-                    <td><a class="update" id="${meal.id}"><span class="fa fa-adjust"></span></a></td>
+                    <td><a href="meals/update?id=${meal.id}"><span class="fa fa-pencil"></span></a></td>
                         <%--<td><a href="meals/delete?id=${meal.id}"><spring:message code="common.delete"/></a></td>--%>
                     <td><a class="delete" id="${meal.id}"><span class="fa fa-remove"></span></a></td>
                 </tr>
             </c:forEach>
         </table>
+
     </div>
 </div>
 
+<!-- MODAL WINDOW -->
 <div class="modal fade" tabindex="-1" id="editRow">
     <div class="modal-dialog">
         <div class="modal-content">

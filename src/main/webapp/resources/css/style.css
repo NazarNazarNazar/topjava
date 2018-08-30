@@ -23,6 +23,14 @@ tr[data-mealExceed="true"] {
     color: red;
 }
 
+tr[data-userEnabled="false"] {
+    color: green;
+}
+
+tr[data-userEnabled="true"] {
+    color: red;
+}
+
 .fa {
     cursor: pointer;
 }

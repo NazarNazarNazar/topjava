@@ -73,4 +73,22 @@ function failNoty(jqXHR) {
         type: "error",
         layout: "bottomRight"
     }).show();
+
 }
+
+function filter() {
+    $.ajax({
+        type: "POST",
+        url: ajaxUrl + "filter",
+        data: $('#filter').serialize(),
+        success: function () {
+            updateTable();
+            successNoty("Filter");
+        }
+    });
+}
+
+$("#reset").click(function () {
+    $("#filter")[0].reset();
+});
+

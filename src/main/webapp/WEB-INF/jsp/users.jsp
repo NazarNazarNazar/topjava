@@ -18,26 +18,25 @@
             <span class="fa fa-plus"></span>
             <spring:message code="common.add"/>
         </button>
-        <table class="table table-striped" id="datatable">
+        <table class="table" id="datatable">
             <thead>
-            <tr>
-                <th><spring:message code="user.name"/></th>
-                <th><spring:message code="user.email"/></th>
-                <th><spring:message code="user.roles"/></th>
+            <tr scope="col">
+                <th scope="row"><spring:message code="user.name"/></th>
+                <th scope="row"><spring:message code="user.email"/></th>
+                <th scope="row"><spring:message code="user.roles"/></th>
                 <th><spring:message code="user.active"/></th>
-                <th><spring:message code="user.registered"/></th>
-                <th></th>
-                <th></th>
+                <th scope="row"><spring:message code="user.registered"/></th>
+                <th scope="row"></th>
+                <th scope="row"></th>
             </tr>
             </thead>
             <c:forEach items="${users}" var="user">
                 <jsp:useBean id="user" type="ru.javawebinar.topjava.model.User"/>
-                <tr>
-                    <td><c:out value="${user.name}"/></td>
+                <tr data-userEnabled="${user.enabled}" scope="col">
+                    <td>${user.name}</td>
                     <td><a href="mailto:${user.email}">${user.email}</a></td>
                     <td>${user.roles}</td>
-                    <td><input type="checkbox"
-                               <c:if test="${user.enabled}">checked</c:if> id="${user.id}"/></td>
+                    <td><input type="checkbox" <c:if test="${user.enabled}">checked</c:if> id="${user.id}"/></td>
                     <td><fmt:formatDate value="${user.registered}" pattern="dd-MMMM-yyyy"/></td>
                     <td><a><span class="fa fa-pencil"></span></a></td>
                     <td><a class="delete" id="${user.id}"><span class="fa fa-remove"></span></a></td>
