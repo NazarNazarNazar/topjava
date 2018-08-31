@@ -1,8 +1,13 @@
 package ru.javawebinar.topjava.web;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.validation.BindingResult;
 import ru.javawebinar.topjava.AuthorizedUser;
+
+import java.util.StringJoiner;
 
 import static java.util.Objects.requireNonNull;
 
@@ -29,5 +34,21 @@ public class SecurityUtil {
 
     public static int authUserCaloriesPerDay() {
         return get().getUserTo().getCaloriesPerDay();
+    }
+
+    public static ResponseEntity<String> getStringResponseEntity(BindingResult result) {
+        if (result.hasErrors()) {
+            StringJoiner joiner = new StringJoiner("<br>");
+            result.getFieldErrors().forEach(
+                    fe -> {
+                        String msg = fe.getDefaultMessage();
+                        if (!msg.startsWith(fe.getField())) {
+                            msg = fe.getField() + ' ' + msg;
+                        }
+                        joiner.add(msg);
+                    });
+            return new ResponseEntity<>(joiner.toString(), HttpStatus.UNPROCESSABLE_ENTITY);
+        }
+        return null;
     }
 }
