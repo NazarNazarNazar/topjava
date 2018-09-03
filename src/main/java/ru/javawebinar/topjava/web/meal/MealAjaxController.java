@@ -40,6 +40,7 @@ public class MealAjaxController extends AbstractMealController {
         } else {
             super.update(meal, meal.getId());
         }
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

@@ -1,9 +1,11 @@
 const ajaxUrl = "ajax/profile/meals/";
 let datatableApi;
 
+// $("#dateTime").val(new Date().toISOString().substring(0, 10));
+
 function updateTable() {
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: ajaxUrl + "filter",
         data: $("#filter").serialize()
     }).done(updateTableByData);
@@ -39,14 +41,14 @@ $(function () {
                 "data": "calories"
             },
             {
+                "render": renderEditBtn,
                 "defaultContent": "Edit",
-                "orderable": false,
-                "render": renderEditBtn
+                "orderable": false
             },
             {
+                "render": renderDeleteBtn,
                 "defaultContent": "Delete",
-                "orderable": false,
-                "render": renderDeleteBtn
+                "orderable": false
             }
         ],
         "order": [
@@ -60,4 +62,5 @@ $(function () {
         },
         "initComplete": makeEditable
     });
+
 });
