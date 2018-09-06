@@ -16,6 +16,7 @@ function clearFilter() {
     $.get(ajaxUrl, updateTableByData);
 }
 
+
 $(function () {
     datatableApi = $("#datatable").DataTable({
         "ajax": {
@@ -62,5 +63,9 @@ $(function () {
         },
         "initComplete": makeEditable
     });
-
+    $('#dateTime').datetimepicker({
+        format: 'Y-m-d H:i'
+    });
 });
+
+
